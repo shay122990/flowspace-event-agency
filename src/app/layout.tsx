@@ -15,9 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className="">
         <Navbar />
-        <main className="container py-8">{children}</main>
+        <main className="flex-1 flex justify-center">
+          <div className="container">{children}</div>
+        </main>
         <Footer />
       </body>
     </html>
