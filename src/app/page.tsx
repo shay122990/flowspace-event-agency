@@ -18,7 +18,7 @@ export default function HomePage() {
             Generate Proposal
           </Link>
           <Link
-            href="/(marketing)/portfolio"
+            href="/portfolio"
             className="rounded-lg border border-white/20 hover:border-white/40 px-6 py-3 font-medium"
           >
             View Portfolio
