@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { CgMenuLeft, CgClose } from "react-icons/cg";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -47,9 +48,7 @@ export default function Navbar() {
           onClick={() => setOpen(true)}
           className="inline-flex h-10 w-10 items-center justify-center rounded-md hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-brand-500"
         >
-          <span className="block h-0.5 w-5 bg-white" />
-          <span className="mt-1 block h-0.5 w-5 bg-white" />
-          <span className="mt-1 block h-0.5 w-5 bg-white" />
+          <CgMenuLeft size={22} />
         </button>
 
         <Link href="/" className="font-bold tracking-tight text-xl">
@@ -97,7 +96,7 @@ export default function Navbar() {
         aria-label="Navigation Menu"
         className={`lg:hidden fixed inset-0 transition-opacity ${
           open
-            ? "opacity-200 pointer-events-auto"
+            ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
         onMouseDown={handleOverlayClick}
@@ -125,25 +124,12 @@ export default function Navbar() {
               className="inline-flex h-9 w-9 items-center justify-center rounded-md hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-brand-500"
             >
               <span className="sr-only">Close</span>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M6 6l12 12M18 6L6 18"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
+              <CgClose size={22} />
             </button>
           </div>
 
           <nav aria-label="Mobile">
-            <ul className="px-2 py-2">
+            <ul className="px-2 py-8 bg-black">
               {navLinks.map((l) => {
                 const active = pathname === l.href;
                 return (
