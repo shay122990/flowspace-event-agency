@@ -63,7 +63,7 @@ export default function Navbar() {
         </Link>
       </div>
 
-      <div className="container  hidden lg:flex lg:flex-col lg:items-center lg:justify-center lg:py-5 w-full">
+      <div className="container hidden lg:flex lg:flex-col lg:items-center lg:justify-center lg:py-5 gap-4 w-full">
         <Link href="/" className="font-bold tracking-tight text-2xl">
           FlowSpace
         </Link>
