@@ -38,8 +38,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className="flex flex-col items-center sticky top-0 z-40 border-b border-white/10 backdrop-blur supports-[backdrop-filter]:bg-black/40">
-      {/* Mobile bar */}
+    <header className="flex flex-col items-center sticky top-0 z-40 border-b border-white/10 backdrop-blur supports-[backdrop-filter]:bg-black/40 text-white">
       <div className="container flex items-center justify-between py-3 lg:hidden">
         <button
           type="button"
@@ -89,7 +88,6 @@ export default function Navbar() {
           </ul>
         </nav>
       </div>
-      {/* mobile slide */}
       <div
         role="dialog"
         aria-modal="true"
