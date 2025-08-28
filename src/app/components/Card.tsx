@@ -23,7 +23,7 @@ export default function Card({ title, desc }: CardProps) {
 
       <div className="relative z-10">
         <h3 className="text-xl font-semibold tracking-tight">{title}</h3>
-        <p className="mt-2 text-white/70">{desc}</p>
+        <p className="mt-2 text-black/70">{desc}</p>
       </div>
 
       <motion.div
@@ -31,7 +31,7 @@ export default function Card({ title, desc }: CardProps) {
         initial={{ x: 0 }}
         whileHover={{ x: 6 }}
         transition={{ type: "spring", stiffness: 200, damping: 18 }}
-        className="absolute bottom-4 right-4 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-white/80"
+        className="absolute bottom-4 right-4 rounded-full border border-fuchsia/10 bg-white/10 px-3 py-1 text-xs text-fuchsia-900"
       >
         Explore →
       </motion.div>
