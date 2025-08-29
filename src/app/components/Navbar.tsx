@@ -46,7 +46,7 @@ export default function Navbar() {
         "text-black",
         "lg:border-b lg:border-white/10",
         "lg:backdrop-blur lg:bg-transparent lg:supports-[backdrop-filter]:bg-transparent",
-        "lg:text-white",
+        "lg:text-black",
       ].join(" ")}
     >
       {/* Mobile bar */}
@@ -67,7 +67,7 @@ export default function Navbar() {
 
         <Link
           href="/proposal"
-          className="inline-flex items-center rounded-md px-3 py-2 text-sm font-medium bg-black/40 text-white hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-black/30"
+          className="inline-flex items-center rounded-md px-3 py-2 text-sm font-medium bg-black/10 text-black hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-black/30"
         >
           Proposal
         </Link>
