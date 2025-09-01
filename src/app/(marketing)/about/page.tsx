@@ -37,7 +37,7 @@ export default function AboutPage() {
           initial={{ y: 20, opacity: 0, filter: "blur(4px)" }}
           animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-gradient-to-br from-white via-white to-white/70 bg-clip-text text-5xl font-black leading-tight tracking-tight text-transparent md:text-6xl"
+          className="bg-gradient-to-br from-white via-white to-white/70 bg-clip-text text-5xl font-black leading-tight tracking-tight text-transparent md:text-6xl lg:text-8xl"
         >
           About FlowSpace
         </motion.h1>
@@ -46,7 +46,7 @@ export default function AboutPage() {
           initial={{ y: 10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.1, duration: 0.5 }}
-          className="mt-5 text-lg text-white/80 md:text-xl"
+          className="mt-5 text-lg text-black/80 md:text-xl"
         >
           We design and deliver events & projects with precision, clarity, and
           momentum.
@@ -56,7 +56,7 @@ export default function AboutPage() {
           initial={{ y: 10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="mt-4 max-w-2xl text-white/70"
+          className="mt-4 max-w-2xl text-black/70"
         >
           From corporate launches and conferences to immersive experiential
           builds, FlowSpace turns complex ideas into seamless experiences—on

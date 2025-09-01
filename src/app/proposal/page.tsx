@@ -11,7 +11,7 @@ export default function ProposalPage() {
     <div className="grid gap-8">
       <header>
         <h1 className="text-3xl font-semibold">AI-Free Proposal Generator</h1>
-        <p className="text-white/70 mt-2">
+        <p className="text-black/70 mt-2">
           Turn a client brief into a structured draft plan: phases, staffing,
           and budget allocation.
         </p>

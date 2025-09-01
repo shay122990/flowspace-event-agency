@@ -5,7 +5,7 @@ import AnimatedParticles from "@/app/components/AnimatedParticles";
 
 export default function ContactPage() {
   return (
-    <main className="relative min-h-[100svh] overflow-hidden bg-[#0b0b12] text-white">
+    <main className="relative min-h-[100svh] overflow-hidden bg-[#0b0b12]">
       <motion.div
         aria-hidden
         initial={{ rotate: 0, scale: 1 }}
@@ -37,7 +37,7 @@ export default function ContactPage() {
           initial={{ y: 20, opacity: 0, filter: "blur(4px)" }}
           animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-gradient-to-br from-white via-white to-white/70 bg-clip-text text-5xl font-black leading-tight tracking-tight text-transparent md:text-6xl"
+          className="bg-gradient-to-br from-white via-white to-white/70 bg-clip-text text-5xl font-black leading-tight tracking-tight text-transparent md:text-6xl lg:text-8xl"
         >
           Contact
         </motion.h1>
@@ -46,7 +46,7 @@ export default function ContactPage() {
           initial={{ y: 10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.1, duration: 0.5 }}
-          className="mt-4 text-lg text-white/80 md:text-xl"
+          className="mt-4 text-lg text-black/80 md:text-xl"
         >
           Email:{" "}
           <a

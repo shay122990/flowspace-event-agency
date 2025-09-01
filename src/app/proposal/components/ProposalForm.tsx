@@ -49,8 +49,18 @@ export default function ProposalForm({ onResult }: Props) {
 
       const data = (await res.json()) as ProposalResponse;
       onResult(data);
-    } catch (err) {
-      onResult({ error: "Network error. Please try again." });
+    } catch (error) {
+      if (error instanceof Error) {
+        onResult({
+          error: `Something went wrong with submitting form. Error: ${error.message}`,
+        });
+      } else {
+        onResult({
+          error: `Something went wrong with submitting form. Error: ${String(
+            error
+          )}`,
+        });
+      }
     } finally {
       setLoading(false);
     }
@@ -62,8 +72,8 @@ export default function ProposalForm({ onResult }: Props) {
       className="grid gap-4 rounded-xl border border-white/10 p-6"
     >
       <div className="grid md:grid-cols-2 gap-4">
-        <label className="grid gap-2">
-          <span className="text-sm text-white/70">Event Type</span>
+        <label className="grid gap-2 border border-black rounded p-2">
+          <span className="text-sm text-black/70">Event Type</span>
           <input
             className="bg-white/5 border border-white/10 rounded px-3 py-2"
             value={form.eventType}
@@ -73,8 +83,8 @@ export default function ProposalForm({ onResult }: Props) {
           />
         </label>
 
-        <label className="grid gap-2">
-          <span className="text-sm text-white/70">Audience Size</span>
+        <label className="grid gap-2 border border-black rounded p-2">
+          <span className="text-sm text-black/70">Audience Size</span>
           <input
             type="number"
             min={1}
@@ -85,8 +95,8 @@ export default function ProposalForm({ onResult }: Props) {
           />
         </label>
 
-        <label className="grid gap-2">
-          <span className="text-sm text-white/70">Budget (USD)</span>
+        <label className="grid gap-2 border border-black rounded p-2">
+          <span className="text-sm text-black/70">Budget (USD)</span>
           <input
             type="number"
             min={1000}
@@ -98,8 +108,8 @@ export default function ProposalForm({ onResult }: Props) {
           />
         </label>
 
-        <label className="grid gap-2">
-          <span className="text-sm text-white/70">Target Date</span>
+        <label className="grid gap-2 border border-black rounded p-2">
+          <span className="text-sm text-black/70">Target Date</span>
           <input
             type="date"
             className="bg-white/5 border border-white/10 rounded px-3 py-2"
@@ -109,8 +119,8 @@ export default function ProposalForm({ onResult }: Props) {
           />
         </label>
 
-        <label className="md:col-span-2 grid gap-2">
-          <span className="text-sm text-white/70">Location</span>
+        <label className="md:col-span-2 grid gap-2 border border-black rounded p-2">
+          <span className="text-sm text-black/70">Location</span>
           <input
             className="bg-white/5 border border-white/10 rounded px-3 py-2"
             value={form.location}
@@ -120,8 +130,8 @@ export default function ProposalForm({ onResult }: Props) {
           />
         </label>
 
-        <label className="md:col-span-2 grid gap-2">
-          <span className="text-sm text-white/70">Notes (optional)</span>
+        <label className="md:col-span-2 grid gap-2 border border-black rounded p-2">
+          <span className="text-sm text-black/70">Notes (optional)</span>
           <textarea
             className="bg-white/5 border border-white/10 rounded px-3 py-2 min-h-[100px]"
             value={form.notes ?? ""}
@@ -134,7 +144,7 @@ export default function ProposalForm({ onResult }: Props) {
       <button
         type="submit"
         disabled={loading}
-        className="justify-self-start rounded-lg bg-brand-500 hover:bg-brand-600 px-6 py-3 font-medium disabled:opacity-60"
+        className="justify-self-start rounded-lg bg-brand-500 hover:bg-brand-600 px-6 py-3 font-medium disabled:opacity-60 border border-black p-2"
       >
         {loading ? "Generating…" : "Generate Proposal"}
       </button>
