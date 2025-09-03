@@ -1,13 +1,27 @@
-import { projects } from "@/app/data/projects";
 import Link from "next/link";
+import type { Project } from "@/app/types/project";
 
-export default function PortfolioPage() {
+async function getProjects(): Promise<Project[]> {
+  const res = await fetch("http://localhost:3000/api/projects", {
+    next: { revalidate: 60 },
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch projects");
+  }
+
+  return res.json();
+}
+
+export default async function PortfolioPage() {
+  const projects = await getProjects();
+
   return (
     <section className="grid gap-6">
       <h1 className="text-3xl font-semibold">Portfolio</h1>
       <p className="text-black/80">Case studies and projects.</p>
 
-      <ul className="grid grid-cols-3 gap-4">
+      <ul className="grid gap-4">
         {projects.map((project) => (
           <li key={project.slug} className="border p-4 rounded-lg shadow">
             <h2 className="text-xl font-medium">{project.title}</h2>
