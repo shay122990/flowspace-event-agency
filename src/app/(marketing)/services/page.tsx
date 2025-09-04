@@ -1,3 +1,7 @@
+"use client";
+
+import Card from "./components/Card";
+
 export default function ServicesPage() {
   const services = [
     { title: "Event Strategy", desc: "Goals, budgets, and KPIs." },
@@ -6,14 +10,17 @@ export default function ServicesPage() {
   ];
 
   return (
-    <section className="grid gap-6">
-      <h1 className="text-3xl font-semibold">Services</h1>
-      <div className="grid md:grid-cols-3 gap-6">
+    <section className="relative w-full px-10 py-20 text-black/80 bg">
+      <div className="mx-auto max-w-5xl text-center">
+        <h1 className="text-5xl font-black ">Services</h1>
+        <p className="mt-4 text-lg ">
+          Expertise across planning, production, and execution.
+        </p>
+      </div>
+
+      <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
         {services.map((s) => (
-          <div key={s.title} className="rounded-xl border border-black/10 p-6">
-            <h3 className="text-xl font-semibold">{s.title}</h3>
-            <p className="mt-2 text-black/70">{s.desc}</p>
-          </div>
+          <Card key={s.title} title={s.title} desc={s.desc} />
         ))}
       </div>
     </section>

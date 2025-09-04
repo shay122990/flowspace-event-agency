@@ -14,10 +14,10 @@ export default function Card({ title, desc }: CardProps) {
       whileInView={{ y: 0, opacity: 1, filter: "blur(0px)" }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       viewport={{ once: true }}
-      className="relative rounded-2xl border border-white/20 bg-white/10 p-6 shadow-lg backdrop-blur-md hover:border-fuchsia-400/50 hover:shadow-fuchsia-500/20 transition"
+      className="relative rounded-2xl border border-white/90 bg-white/10 p-6 shadow-lg backdrop-blur-md hover:border-fuchsia-400/50 hover:shadow-fuchsia-500/20 transition"
     >
-      <h3 className="text-xl font-semibold text-white">{title}</h3>
-      <p className="mt-2 text-sm text-white/70">{desc}</p>
+      <h3 className="text-xl font-semibold text-black/80">{title}</h3>
+      <p className="mt-2 text-sm text-black/80">{desc}</p>
     </motion.div>
   );
 }
