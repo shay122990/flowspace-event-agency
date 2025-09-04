@@ -64,7 +64,7 @@ export default function HomePage() {
       <AnimatedParticles />
 
       {/* Hero */}
-      <section className="relative  w-full min-h-[100svh]  px-10 py-10">
+      <section className="relative  w-full  px-10 py-10">
         <div className="w-full h-full rounded  bg-white/30 px-10 py-20">
           <header className="mx-auto max-w-3xl text-center">
             <motion.h1
@@ -116,7 +116,7 @@ export default function HomePage() {
               hidden: {},
               show: { transition: { staggerChildren: 0.12 } },
             }}
-            className="mt-16 grid grid-cols-1 gap-6 md:mt-24 md:grid-cols-3"
+            className="mt-16 grid grid-cols-1 gap-4 md:mt-24 md:grid-cols-3"
           >
             {cards.map((c) => (
               <Card key={c.title} title={c.title} desc={c.desc} />

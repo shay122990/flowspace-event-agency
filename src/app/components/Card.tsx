@@ -11,7 +11,7 @@ export default function Card({ title, desc }: CardProps) {
     <motion.article
       variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}
       whileHover={{ y: -6 }}
-      className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] backdrop-blur-sm"
+      className="group h-30 md:h-44 lg:h-32 relative overflow-hidden rounded-2xl border border-white bg-white/[0.03] p-6  shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] backdrop-blur-sm"
     >
       <motion.div
         aria-hidden
@@ -31,7 +31,7 @@ export default function Card({ title, desc }: CardProps) {
         initial={{ x: 0 }}
         whileHover={{ x: 6 }}
         transition={{ type: "spring", stiffness: 200, damping: 18 }}
-        className="absolute bottom-4 right-4 rounded-full border border-fuchsia/10 bg-white/10 px-3 py-1 text-xs text-fuchsia-900"
+        className="absolute bottom-2 right-4 rounded-full border border-fuchsia/10 bg-white/10 px-4 py-1 text-xs text-fuchsia-900"
       >
         Explore →
       </motion.div>
