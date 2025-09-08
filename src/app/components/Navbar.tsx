@@ -113,8 +113,6 @@ export default function Navbar() {
         }`}
         onMouseDown={handleOverlayClick}
       >
-        {/* <div className="absolute inset-0 bg-black backdrop-blur-md" /> */}
-
         {/* Slide-out panel */}
         <div
           ref={panelRef}
