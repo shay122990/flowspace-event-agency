@@ -1,9 +1,9 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import type { Project } from "@/app/types/project";
+import AmbientBackdrop from "@/app/components/AmbientBackdrop";
 
 export default function PortfolioPage() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -18,11 +18,7 @@ export default function PortfolioPage() {
         const data: Project[] = await res.json();
         setProjects(data);
       } catch (e: unknown) {
-        if (e instanceof Error) {
-          setErr(e.message);
-        } else {
-          setErr("Unknown error");
-        }
+        setErr(e instanceof Error ? e.message : "Unknown error");
       } finally {
         setLoading(false);
       }
@@ -30,46 +26,11 @@ export default function PortfolioPage() {
   }, []);
 
   return (
-    <section className="relative w-full px-10 py-20 overflow-hidden bg-black/40 text-white rounded-xl">
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 via-blue-400/20 to-orange-400/20 blur-2xl" />
-      </div>
-
-      <motion.div
-        aria-hidden
-        initial={{ rotate: -8 }}
-        animate={{ rotate: 8 }}
-        transition={{
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut",
-          duration: 12,
-        }}
-        className="pointer-events-none absolute inset-0 opacity-40 blur-3xl"
-        style={{
-          background: `conic-gradient(
-            from 90deg at 50% 50%,
-            #2AFADF 0deg,
-            #4C83FF 120deg,
-            #FFF886 120deg,
-            #F072B6 240deg,
-            #FFD3A5 240deg,
-            #FD6585 360deg
-          )`,
-        }}
-      />
-
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(70%_70%_at_50%_40%,#000_40%,transparent_80%)]"
-      >
-        <div className="absolute inset-x-0 top-0 mx-auto h-[40rem] w-[40rem] rounded-full bg-gradient-to-br from-pink-400/20 via-cyan-400/20 to-emerald-400/20 blur-3xl" />
-      </div>
-
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.05)_1px,transparent_1px)] bg-[size:32px_32px] opacity-20"
-      />
+    <section
+      className="relative w-full px-10 py-20 overflow-hidden rounded-xl text-white
+                 bg-[radial-gradient(700px_520px_at_0%_0%,rgba(236,72,153,0.18),transparent_45%),radial-gradient(680px_520px_at_100%_0%,rgba(56,189,248,0.2),transparent_48%),radial-gradient(780px_560px_at_50%_100%,rgba(16,185,129,0.18),transparent_50%)]"
+    >
+      <AmbientBackdrop />
 
       <div className="relative z-10 mx-auto max-w-6xl">
         <header className="text-center">
@@ -77,8 +38,10 @@ export default function PortfolioPage() {
           <p className="mt-4 text-lg">Case studies and projects.</p>
         </header>
 
-        {loading && <p className="mt-12 text-center text-black/70">Loading…</p>}
-        {err && <p className="mt-12 text-center text-red-600">{err}</p>}
+        {loading && (
+          <p className="mt-12 text-center text-fuchsia-300/80">Loading…</p>
+        )}
+        {err && <p className="mt-12 text-center text-red-400">{err}</p>}
 
         {!loading && !err && (
           <ul className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -89,19 +52,20 @@ export default function PortfolioPage() {
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="group relative rounded-2xl border border-black/10 bg-white/10 p-6 backdrop-blur-md hover:border-black/30 hover:bg-white/20 transition-colors"
+                className="group relative rounded-2xl border border-fuchsia-500/25 
+                           bg-gradient-to-br from-fuchsia-500/10 via-cyan-400/10 to-emerald-400/10
+                           p-6 hover:border-fuchsia-500/40 hover:from-fuchsia-500/20 hover:via-cyan-400/20 hover:to-emerald-400/20
+                           transition-colors"
               >
                 <h2 className="text-xl font-medium">{project.title}</h2>
-                <p className="mt-2 text-sm text-white">{project.description}</p>
+                <p className="mt-2 text-sm">{project.description}</p>
 
                 <Link
                   href={`/portfolio/${project.slug}`}
-                  className="mt-3 inline-block text-fuchsia-400  underline"
+                  className="mt-3 inline-block text-cyan-300 underline"
                 >
                   View case study →
                 </Link>
-
-                <div className="pointer-events-none absolute inset-0 -z-10 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-fuchsia-500/25 via-cyan-400/25 to-emerald-400/25 blur-xl" />
               </motion.li>
             ))}
           </ul>

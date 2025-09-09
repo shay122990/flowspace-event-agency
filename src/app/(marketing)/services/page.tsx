@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import AmbientBackdrop from "@/app/components/AmbientBackdrop";
 import Card from "./components/Card";
 
 export default function ServicesPage() {
@@ -11,49 +11,11 @@ export default function ServicesPage() {
   ];
 
   return (
-    <section className="relative w-full px-10 py-20 rounded-xl overflow-hidden bg-[#0b0b12] text-white">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-xl"
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 via-cyan-400/20 to-emerald-400/20 blur-2xl" />
-      </div>
-
-      <motion.div
-        aria-hidden
-        initial={{ rotate: -8 }}
-        animate={{ rotate: 8 }}
-        transition={{
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut",
-          duration: 12,
-        }}
-        className="pointer-events-none absolute inset-0 opacity-40 blur-3xl"
-        style={{
-          background: `conic-gradient(
-            from 90deg at 50% 50%,
-            #2AFADF 0deg,
-            #4C83FF 120deg,
-            #FFF886 120deg,
-            #F072B6 240deg,
-            #FFD3A5 240deg,
-            #FD6585 360deg
-          )`,
-        }}
-      />
-
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(70%_70%_at_50%_40%,#000_40%,transparent_80%)]"
-      >
-        <div className="absolute inset-x-0 top-0 mx-auto h-[40rem] w-[40rem] rounded-full bg-gradient-to-br from-pink-400/20 via-cyan-400/20 to-emerald-400/20 blur-3xl" />
-      </div>
-
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.05)_1px,transparent_1px)] bg-[size:32px_32px] opacity-20"
-      />
+    <section
+      className="relative w-full px-10 py-20 rounded-xl overflow-hidden text-white
+                 bg-[radial-gradient(720px_520px_at_0%_-10%,rgba(236,72,153,0.18),transparent_45%),radial-gradient(700px_520px_at_110%_0%,rgba(56,189,248,0.22),transparent_48%),radial-gradient(760px_540px_at_50%_110%,rgba(16,185,129,0.18),transparent_50%)]"
+    >
+      <AmbientBackdrop />
 
       <div className="relative z-10 mx-auto max-w-5xl text-center">
         <h1 className="text-5xl font-black">Services</h1>
