@@ -6,12 +6,9 @@ import clsx from "clsx";
 
 type Variant = "about" | "portfolio" | "services";
 
-interface AmbientBackdropProps {
-  /** Choose slight style differences per page */
+interface Props {
   variant?: Variant;
-  /** Keep particles optional */
   withParticles?: boolean;
-  /** Extra classes if you ever need them */
   className?: string;
 }
 
@@ -19,34 +16,25 @@ export default function AmbientBackdrop({
   variant = "about",
   withParticles = false,
   className,
-}: AmbientBackdropProps) {
+}: Props) {
   const cfg = {
     about: {
       rotateDur: 30,
-      mask: "radial-gradient(60%_60%_at_50%_35%,#000_30%,transparent_70%)",
-      blobSize: "h-[60rem] w-[60rem]",
-      glowSize: "h-[44rem] w-[44rem]",
-      conicOpacity: "opacity-60",
-      gridOpacity: "opacity-20",
-      hue: "hue-rotate-0",
+      blob: "h-[60rem] w-[60rem]",
+      glow: "h-[44rem] w-[44rem]",
+      conicOpacity: "opacity-70",
     },
     portfolio: {
       rotateDur: 24,
-      mask: "radial-gradient(70%_70%_at_50%_40%,#000_40%,transparent_80%)",
-      blobSize: "h-[56rem] w-[56rem]",
-      glowSize: "h-[40rem] w-[40rem]",
-      conicOpacity: "opacity-50",
-      gridOpacity: "opacity-20",
-      hue: "hue-rotate-15",
+      blob: "h-[56rem] w-[56rem]",
+      glow: "h-[40rem] w-[40rem]",
+      conicOpacity: "opacity-60",
     },
     services: {
       rotateDur: 18,
-      mask: "radial-gradient(68%_68%_at_50%_42%,#000_38%,transparent_78%)",
-      blobSize: "h-[52rem] w-[52rem]",
-      glowSize: "h-[38rem] w-[38rem]",
-      conicOpacity: "opacity-45",
-      gridOpacity: "opacity-20",
-      hue: "hue-rotate-30",
+      blob: "h-[52rem] w-[52rem]",
+      glow: "h-[38rem] w-[38rem]",
+      conicOpacity: "opacity-55",
     },
   }[variant];
 
@@ -68,9 +56,8 @@ export default function AmbientBackdrop({
         }}
         className={clsx(
           "absolute -top-40 -left-40 rounded-full blur-3xl",
-          cfg.blobSize,
-          cfg.conicOpacity,
-          cfg.hue
+          cfg.blob,
+          cfg.conicOpacity
         )}
         style={{
           background:
@@ -78,43 +65,36 @@ export default function AmbientBackdrop({
         }}
       />
 
-      {/* Soft radial glow with subtle mask */}
+      {/* Soft luminous glow (no masks) */}
       <div
-        className="absolute inset-0"
-        style={{ WebkitMaskImage: cfg.mask, maskImage: cfg.mask }}
-      >
-        <div
-          className={clsx(
-            "absolute inset-x-0 top-0 mx-auto rounded-full blur-2xl",
-            cfg.glowSize
-          )}
-          style={{
-            background:
-              "linear-gradient(135deg, rgba(244,63,94,0.3), rgba(56,189,248,0.2), rgba(16,185,129,0.3))",
-          }}
-        />
-      </div>
-
-      <div
-        className={clsx("absolute inset-0", cfg.gridOpacity)}
+        className={clsx(
+          "absolute inset-x-0 top-0 mx-auto rounded-full blur-2xl",
+          cfg.glow
+        )}
         style={{
           background:
-            "linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-          WebkitMaskImage:
-            "radial-gradient(ellipse at center, black, transparent 70%)",
-          maskImage:
-            "radial-gradient(ellipse at center, black, transparent 70%)",
+            "linear-gradient(135deg, rgba(244,63,94,0.35), rgba(56,189,248,0.28), rgba(16,185,129,0.35))",
         }}
       />
 
+      {/* Optional particles */}
       {withParticles && <AnimatedParticles />}
 
       <motion.div
         initial={{ x: "-10%" }}
         animate={{ x: "10%" }}
         transition={{ repeat: Infinity, repeatType: "reverse", duration: 18 }}
-        className="absolute bottom-[-6rem] left-1/2 h-[14rem] w-[120vw] -translate-x-1/2 rotate-2 bg-gradient-to-r from-fuchsia-500/40 via-cyan-400/40 to-emerald-400/40 blur-2xl"
+        className="absolute bottom-[-6rem] left-1/2 h-[14rem] w-[120vw] -translate-x-1/2 rotate-2
+                   bg-gradient-to-r from-fuchsia-500/40 via-cyan-400/40 to-emerald-400/40 blur-2xl"
+      />
+
+      <div
+        className="absolute inset-0 opacity-20"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.08) 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
       />
     </div>
   );
