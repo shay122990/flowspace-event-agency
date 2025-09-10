@@ -7,7 +7,7 @@ interface CardProps {
   desc: string;
 }
 
-export default function Card({ title, desc }: CardProps) {
+export default function ServiceCard({ title, desc }: CardProps) {
   return (
     <motion.div
       initial={{ y: 20, opacity: 0, filter: "blur(4px)" }}

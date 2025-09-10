@@ -1,7 +1,7 @@
 "use client";
 
 import AmbientBackdrop from "@/app/components/AmbientBackdrop";
-import Card from "./components/Card";
+import Card from "./components/ServiceCard";
 
 export default function ServicesPage() {
   const services = [
