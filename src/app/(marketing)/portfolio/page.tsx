@@ -1,9 +1,9 @@
 "use client";
+
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
 import type { Project } from "@/app/types/project";
 import AmbientBackdrop from "@/app/components/AmbientBackdrop";
+import ProjectCard from "./components/ProjectCard";
 
 export default function PortfolioPage() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -46,27 +46,7 @@ export default function PortfolioPage() {
         {!loading && !err && (
           <ul className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
             {projects.map((project) => (
-              <motion.li
-                key={project.slug}
-                initial={{ y: 16, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="group relative rounded-2xl border border-fuchsia-500/25 
-                           bg-gradient-to-br from-fuchsia-500/10 via-cyan-400/10 to-emerald-400/10
-                           p-6 hover:border-fuchsia-500/40 hover:from-fuchsia-500/20 hover:via-cyan-400/20 hover:to-emerald-400/20
-                           transition-colors"
-              >
-                <h2 className="text-xl font-medium">{project.title}</h2>
-                <p className="mt-2 text-sm">{project.description}</p>
-
-                <Link
-                  href={`/portfolio/${project.slug}`}
-                  className="mt-3 inline-block text-cyan-300 underline"
-                >
-                  View case study →
-                </Link>
-              </motion.li>
+              <ProjectCard key={project.slug} project={project} />
             ))}
           </ul>
         )}
