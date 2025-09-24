@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-svh antialiased bg-[radial-gradient(900px_600px_at_10%_0%,rgba(236,72,153,0.20),transparent_40%),radial-gradient(800px_520px_at_110%_-10%,rgba(56,189,248,0.22),transparent_45%),radial-gradient(820px_560px_at_-10%_65%,rgba(16,185,129,0.20),transparent_48%)]">
+      <body className="min-h-svh flex flex-col antialiased bg-[radial-gradient(900px_600px_at_10%_0%,rgba(236,72,153,0.20),transparent_40%),radial-gradient(800px_520px_at_110%_-10%,rgba(56,189,248,0.22),transparent_45%),radial-gradient(820px_560px_at_-10%_65%,rgba(16,185,129,0.20),transparent_48%)]">
         <Navbar />
         <main className="flex-1 flex justify-center">
           <div className="container">{children}</div>

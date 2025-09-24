@@ -31,7 +31,7 @@ export default function Card({ title, desc }: CardProps) {
         initial={{ x: 0 }}
         whileHover={{ x: 6 }}
         transition={{ type: "spring", stiffness: 200, damping: 18 }}
-        className="absolute bottom-2 right-4 rounded-full border border-fuchsia/10 bg-white/10 px-4 py-1 text-xs text-fuchsia-900"
+        className="absolute bottom-2 right-4 rounded-full border border-fuchsia/10 bg-white/10 px-4 py-1 text-xs text-fuchsia-900 hover:cursor-pointer"
       >
         Explore →
       </motion.div>

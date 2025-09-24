@@ -13,7 +13,7 @@ const cards = [
 
 export default function HomePage() {
   return (
-    <main className="flex justify-center relative overflow-hidden md:rounded-xl bg-[#0b0b12] text-gray-800">
+    <main className="flex justify-center relative overflow-hidden md:rounded-xl bg-[#0b0b12] text-gray-800 -z-0">
       {/* Blurry colorful border overlay */}
       <div
         aria-hidden
