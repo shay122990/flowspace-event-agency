@@ -1,4 +1,3 @@
-// app/data/projects.ts
 import type { Project } from "@/app/types/project";
 
 export const projects: Project[] = [
