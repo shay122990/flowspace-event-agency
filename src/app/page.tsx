@@ -6,9 +6,21 @@ import AnimatedParticles from "./components/AnimatedParticles";
 import Card from "./components/Card";
 
 const cards = [
-  { title: "Corporate Launches", desc: "End-to-end launch operations." },
-  { title: "Conferences", desc: "Speakers, staging, and schedules." },
-  { title: "Experiential", desc: "Immersive brand experiences." },
+  {
+    title: "Event Strategy",
+    desc: "Goals, budgets, and KPIs.",
+    href: "/services#strategy",
+  },
+  {
+    title: "Production",
+    desc: "Vendors, staging, logistics.",
+    href: "/services#production",
+  },
+  {
+    title: "Project Ops",
+    desc: "Timelines, dependencies, staffing.",
+    href: "/services#ops",
+  },
 ];
 
 export default function HomePage() {
@@ -119,7 +131,7 @@ export default function HomePage() {
             className="mt-16 grid grid-cols-1 gap-4 md:mt-24 md:grid-cols-3"
           >
             {cards.map((c) => (
-              <Card key={c.title} title={c.title} desc={c.desc} />
+              <Card key={c.title} title={c.title} desc={c.desc} href={c.href} />
             ))}
           </motion.div>
         </div>

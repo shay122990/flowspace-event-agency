@@ -1,12 +1,14 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 type CardProps = {
   title: string;
   desc: string;
+  href: string;
 };
 
-export default function Card({ title, desc }: CardProps) {
+export default function Card({ title, desc, href }: CardProps) {
   return (
     <motion.article
       variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}
@@ -33,7 +35,7 @@ export default function Card({ title, desc }: CardProps) {
         transition={{ type: "spring", stiffness: 200, damping: 18 }}
         className="absolute bottom-2 right-4 rounded-full border border-fuchsia/10 bg-white/10 px-4 py-1 text-xs text-fuchsia-900 hover:cursor-pointer"
       >
-        Explore →
+        <Link href={href}>Explore →</Link>
       </motion.div>
     </motion.article>
   );

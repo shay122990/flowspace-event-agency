@@ -22,7 +22,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 
       <Link
         href={`/portfolio/${project.slug}`}
-        className="mt-3 inline-block text-cyan-300 underline"
+        className="mt-3 inline-block text-fuchsia-600 underline"
       >
         View case study →
       </Link>

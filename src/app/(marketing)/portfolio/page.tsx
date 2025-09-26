@@ -27,7 +27,7 @@ export default function PortfolioPage() {
 
   return (
     <section
-      className="relative w-full px-10 py-20 overflow-hidden rounded-xl text-white
+      className="relative w-full px-10 py-20 overflow-hidden rounded-xl text-gray-700
                  bg-[radial-gradient(700px_520px_at_0%_0%,rgba(236,72,153,0.18),transparent_45%),radial-gradient(680px_520px_at_100%_0%,rgba(56,189,248,0.2),transparent_48%),radial-gradient(780px_560px_at_50%_100%,rgba(16,185,129,0.18),transparent_50%)]"
     >
       <AmbientBackdrop />
