@@ -20,7 +20,7 @@ export default function ProjectDetailPage({
 
   return (
     <section
-      className="relative w-full px-6 md:px-10 py-16 text-white overflow-hidden rounded-xl
+      className="relative w-full px-6 md:px-10 py-16 text-gray-700 overflow-hidden rounded-xl
                  bg-[radial-gradient(700px_520px_at_0%_0%,rgba(236,72,153,0.18),transparent_45%),radial-gradient(680px_520px_at_100%_0%,rgba(56,189,248,0.2),transparent_48%),radial-gradient(780px_560px_at_50%_100%,rgba(16,185,129,0.18),transparent_50%)]"
     >
       <div className="relative z-10 mx-auto max-w-5xl">
@@ -49,14 +49,14 @@ export default function ProjectDetailPage({
 
           <div className="p-6 md:p-8">
             {content?.hero?.kicker && (
-              <p className="text-sm uppercase tracking-wider text-white/70">
+              <p className="text-sm uppercase tracking-wider text-gray-500">
                 {content.hero.kicker}
               </p>
             )}
             <h1 className="mt-1 text-4xl md:text-5xl font-black">
               {project.title}
             </h1>
-            <p className="mt-3 text-white/80">{project.description}</p>
+            <p className="mt-3 text-gray-500">{project.description}</p>
           </div>
         </header>
 
@@ -67,7 +67,7 @@ export default function ProjectDetailPage({
                 key={s.label}
                 className="rounded-xl border border-white/10 bg-gradient-to-br from-fuchsia-500/10 to-cyan-400/10 px-4 py-2"
               >
-                <span className="text-white/70 mr-2">{s.label}:</span>
+                <span className="text-gray-500 mr-2">{s.label}:</span>
                 <span className="font-semibold">{s.value}</span>
               </li>
             ))}
@@ -77,7 +77,7 @@ export default function ProjectDetailPage({
         <div className="mt-10 grid md:grid-cols-2 gap-6">
           <section className="rounded-2xl border border-fuchsia-500/20 p-6 bg-white/5">
             <h2 className="text-2xl font-semibold">Overview</h2>
-            <p className="mt-3 text-white/85">
+            <p className="mt-3 text-gray-500">
               {content?.overview ?? "Overview coming soon."}
             </p>
           </section>
@@ -98,7 +98,7 @@ export default function ProjectDetailPage({
 
           <section className="md:col-span-2 rounded-2xl border border-fuchsia-500/20 p-6 bg-white/5">
             <h2 className="text-2xl font-semibold">Highlights</h2>
-            <ul className="mt-4 grid md:grid-cols-2 gap-3 list-disc list-inside text-white/85">
+            <ul className="mt-4 grid md:grid-cols-2 gap-3 list-disc list-inside text-gray-500">
               {(content?.highlights ?? []).map((h) => (
                 <li key={h}>{h}</li>
               ))}
