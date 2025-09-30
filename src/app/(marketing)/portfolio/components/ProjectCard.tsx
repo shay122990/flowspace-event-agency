@@ -18,7 +18,9 @@ export default function ProjectCard({ project }: { project: Project }) {
                  transition-colors"
     >
       <h2 className="text-xl font-medium">{project.title}</h2>
-      <p className="mt-2 text-sm">{project.description}</p>
+      <p className="text-white lg:text-gray-600 mt-2 text-sm">
+        {project.description}
+      </p>
 
       <Link
         href={`/portfolio/${project.slug}`}
