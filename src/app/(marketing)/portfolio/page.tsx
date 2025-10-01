@@ -14,7 +14,7 @@ export default function PortfolioPage() {
 
       <div className="relative z-10 mx-auto max-w-6xl">
         <header className="text-center">
-          <h1 className="text-5xl font-black">Portfolio</h1>
+          <h1 className="text-8xl font-black text-white">Portfolio</h1>
           <p className="mt-4 text-lg">Case studies and projects.</p>
         </header>
 

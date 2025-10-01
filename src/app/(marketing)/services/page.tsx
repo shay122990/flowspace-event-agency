@@ -70,7 +70,7 @@ export default function ServicesPage() {
       <AmbientBackdrop />
 
       <div className="relative z-10 mx-auto max-w-5xl text-center">
-        <h1 className="text-5xl font-black tracking-tight text-gray-900 drop-shadow-sm">
+        <h1 className="text-8xl font-black tracking-tight text-white drop-shadow-sm">
           Services
         </h1>
         <p className="mt-4 text-lg text-gray-700">
