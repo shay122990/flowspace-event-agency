@@ -1,7 +1,7 @@
 "use client";
 
 import AmbientBackdrop from "@/app/components/AmbientBackdrop";
-import ServiceSection from "./components/servicesSection";
+import ServiceSection from "./components/ServicesSection";
 import { servicesSections } from "@/app/data/servicesSections";
 
 export default function ServicesPage() {
