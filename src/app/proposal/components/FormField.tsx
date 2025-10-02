@@ -2,88 +2,52 @@
 
 import * as React from "react";
 
-type BaseProps = {
+type Props = {
   label: string;
-  helperText?: string;
-  error?: string;
-  containerClassName?: string;
-  labelClassName?: string;
+  type?: string;
+  value: string | number;
+  onChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  textarea?: boolean;
+  placeholder?: string;
+  required?: boolean;
 };
 
-type InputVariant = BaseProps &
-  Omit<React.InputHTMLAttributes<HTMLInputElement>, "className"> & {
-    as?: "input";
-    inputClassName?: string;
-  };
-
-type TextareaVariant = BaseProps &
-  Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "className"> & {
-    as: "textarea";
-    textareaClassName?: string;
-  };
-
-export type FormFieldProps = InputVariant | TextareaVariant;
-
-const baseContainer =
-  "grid gap-2 rounded border border-white/10 bg-white/0 p-2";
-const baseLabel = "text-sm text-black/70";
-const baseControl =
-  "rounded border border-white/10 bg-black/15 px-3 py-2 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/20";
-
-const FormField = React.forwardRef<
-  HTMLInputElement | HTMLTextAreaElement,
-  FormFieldProps
->((props, ref) => {
-  if (props.as === "textarea") {
-    const {
-      label,
-      helperText,
-      error,
-      containerClassName,
-      labelClassName,
-      textareaClassName,
-      ...rest
-    } = props as TextareaVariant;
-    return (
-      <label className={`${baseContainer} ${containerClassName ?? ""}`}>
-        <span className={`${baseLabel} ${labelClassName ?? ""}`}>{label}</span>
-        <textarea
-          ref={ref as React.Ref<HTMLTextAreaElement>}
-          className={`${baseControl} ${textareaClassName ?? ""} min-h-[100px]`}
-          {...rest}
-        />
-        {helperText && !error && (
-          <span className="text-xs text-white/50">{helperText}</span>
-        )}
-        {error && <span className="text-xs text-rose-400">{error}</span>}
-      </label>
-    );
-  }
-
-  const {
-    label,
-    helperText,
-    error,
-    containerClassName,
-    labelClassName,
-    inputClassName,
-    ...rest
-  } = props as InputVariant;
+const FormField = ({
+  label,
+  type = "text",
+  value,
+  onChange,
+  textarea,
+  placeholder,
+  required,
+}: Props) => {
   return (
-    <label className={`${baseContainer} ${containerClassName ?? ""}`}>
-      <span className={`${baseLabel} ${labelClassName ?? ""}`}>{label}</span>
-      <input
-        ref={ref as React.Ref<HTMLInputElement>}
-        className={`${baseControl} ${inputClassName ?? ""}`}
-        {...rest}
-      />
-      {helperText && !error && (
-        <span className="text-xs text-white/50">{helperText}</span>
+    <label className="grid gap-2 rounded border border-gray-900 p-2">
+      <span className="text-sm text-black/70">{label}</span>
+      {textarea ? (
+        <textarea
+          className="rounded border border-white/10 px-3 py-2 text-white placeholder-white 
+               focus:outline-none focus:ring-2 focus:ring-white/20 
+               min-h-[300px] w-full"
+          value={value as string}
+          onChange={onChange}
+          placeholder={placeholder}
+          required={required}
+        />
+      ) : (
+        <input
+          className="rounded border border-white/50 px-3 py-2 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white/20"
+          type={type}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          required={required}
+        />
       )}
-      {error && <span className="text-xs text-rose-400">{error}</span>}
     </label>
   );
-});
-FormField.displayName = "FormField";
+};
 
 export default FormField;

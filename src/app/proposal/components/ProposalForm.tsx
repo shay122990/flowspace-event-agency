@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import FormField from "./FormField";
 
 export type ProposalInput = {
   eventType: string;
@@ -20,7 +21,7 @@ type Props = {
 };
 
 export default function ProposalForm({ onResult }: Props) {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState<ProposalInput>({
     eventType: "Conference",
     audienceSize: 300,
@@ -30,12 +31,21 @@ export default function ProposalForm({ onResult }: Props) {
     notes: "",
   });
 
-  function update<K extends keyof ProposalInput>(
+  const update = <K extends keyof ProposalInput>(
     key: K,
     value: ProposalInput[K]
-  ) {
+  ) => {
     setForm((prev) => ({ ...prev, [key]: value }));
-  }
+  };
+
+  const commonFieldProps = useMemo(
+    () => ({
+      required: true,
+      inputClassName: "w-full",
+      containerClassName: "rounded border border-white/10 p-2",
+    }),
+    []
+  );
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -46,21 +56,13 @@ export default function ProposalForm({ onResult }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-
       const data = (await res.json()) as ProposalResponse;
       onResult(data);
     } catch (error) {
-      if (error instanceof Error) {
-        onResult({
-          error: `Something went wrong with submitting form. Error: ${error.message}`,
-        });
-      } else {
-        onResult({
-          error: `Something went wrong with submitting form. Error: ${String(
-            error
-          )}`,
-        });
-      }
+      const message = error instanceof Error ? error.message : String(error);
+      onResult({
+        error: `Something went wrong with submitting form. Error: ${message}`,
+      });
     } finally {
       setLoading(false);
     }
@@ -69,82 +71,67 @@ export default function ProposalForm({ onResult }: Props) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="grid gap-4 rounded-xl border border-white/10 p-6"
+      className="grid gap-6 rounded-xl border border-gray-900 p-6"
     >
-      <div className="grid md:grid-cols-2 gap-4">
-        <label className="grid gap-2 border border-black rounded p-2">
-          <span className="text-sm text-gray-900">Event Type</span>
-          <input
-            className="bg-black/15 border border-white/10 rounded px-3 py-2"
-            value={form.eventType}
-            onChange={(e) => update("eventType", e.target.value)}
-            placeholder="Conference, Launch, Expo…"
-            required
-          />
-        </label>
+      <div className="grid gap-4 md:grid-cols-2">
+        <FormField
+          label="Event Type"
+          placeholder="Conference, Launch, Expo…"
+          value={form.eventType}
+          onChange={(e) => update("eventType", e.currentTarget.value)}
+          {...commonFieldProps}
+        />
 
-        <label className="grid gap-2 border border-black rounded p-2">
-          <span className="text-sm text-black/70">Audience Size</span>
-          <input
-            type="number"
-            min={1}
-            className="bg-black/15 border border-white/10 rounded px-3 py-2"
-            value={form.audienceSize}
-            onChange={(e) => update("audienceSize", Number(e.target.value))}
-            required
-          />
-        </label>
+        <FormField
+          label="Audience Size"
+          type="number"
+          value={form.audienceSize}
+          onChange={(e) =>
+            update("audienceSize", Number(e.currentTarget.value))
+          }
+          {...commonFieldProps}
+        />
 
-        <label className="grid gap-2 border border-black rounded p-2">
-          <span className="text-sm text-black/70">Budget (USD)</span>
-          <input
-            type="number"
-            min={1000}
-            step={500}
-            className="bg-black/15 border border-white/10 rounded px-3 py-2"
-            value={form.budget}
-            onChange={(e) => update("budget", Number(e.target.value))}
-            required
-          />
-        </label>
+        <FormField
+          label="Budget (USD)"
+          type="number"
+          value={form.budget}
+          onChange={(e) => update("budget", Number(e.currentTarget.value))}
+          {...commonFieldProps}
+        />
 
-        <label className="grid gap-2 border border-black rounded p-2">
-          <span className="text-sm text-black/70">Target Date</span>
-          <input
-            type="date"
-            className="bg-black/15 border border-white/10 rounded px-3 py-2"
-            value={form.date}
-            onChange={(e) => update("date", e.target.value)}
-            required
-          />
-        </label>
+        <FormField
+          label="Target Date"
+          type="date"
+          value={form.date}
+          onChange={(e) => update("date", e.currentTarget.value)}
+          {...commonFieldProps}
+        />
 
-        <label className="md:col-span-2 grid gap-2 border border-black rounded p-2">
-          <span className="text-sm text-black/70">Location</span>
-          <input
-            className="bg-black/15 border text-white border-white/10 rounded px-3 py-2"
-            value={form.location}
-            onChange={(e) => update("location", e.target.value)}
-            placeholder="City / venue"
-            required
-          />
-        </label>
-
-        <label className="md:col-span-2 grid gap-2 border border-black rounded p-2">
-          <span className="text-sm text-black/70">Notes (optional)</span>
-          <textarea
-            className="bg-white/5 border border-white/10 rounded px-3 py-2 min-h-[100px]"
-            value={form.notes ?? ""}
-            onChange={(e) => update("notes", e.target.value)}
-            placeholder="Goals, constraints, themes…"
-          />
-        </label>
+        <FormField
+          label="Location"
+          placeholder="City / venue"
+          value={form.location}
+          onChange={(e) => update("location", e.currentTarget.value)}
+          required
+        />
       </div>
-
+      <div className="md:col-span-2">
+        <FormField
+          label="Notes (optional)"
+          textarea
+          placeholder="Goals, constraints, themes…"
+          value={form.notes ?? ""}
+          onChange={(e) =>
+            update("notes", (e.target as HTMLTextAreaElement).value)
+          }
+        />
+      </div>
       <button
         type="submit"
         disabled={loading}
-        className="justify-self-start rounded-lg bg-brand-500 hover:bg-brand-600 px-6 py-3 font-medium disabled:opacity-60 border border-black p-2"
+        aria-busy={loading}
+        className="justify-self-start rounded-lg border border-gray-900 bg-white/10 px-6 py-3 font-medium text-gray-600 backdrop-blur transition hover:bg-white/20 disabled:opacity-60"
       >
         {loading ? "Generating…" : "Generate Proposal"}
       </button>
