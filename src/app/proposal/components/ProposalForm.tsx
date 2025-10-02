@@ -73,9 +73,9 @@ export default function ProposalForm({ onResult }: Props) {
     >
       <div className="grid md:grid-cols-2 gap-4">
         <label className="grid gap-2 border border-black rounded p-2">
-          <span className="text-sm text-black/70">Event Type</span>
+          <span className="text-sm text-gray-900">Event Type</span>
           <input
-            className="bg-white/5 border border-white/10 rounded px-3 py-2"
+            className="bg-black/15 border border-white/10 rounded px-3 py-2"
             value={form.eventType}
             onChange={(e) => update("eventType", e.target.value)}
             placeholder="Conference, Launch, Expo…"
@@ -88,7 +88,7 @@ export default function ProposalForm({ onResult }: Props) {
           <input
             type="number"
             min={1}
-            className="bg-white/5 border border-white/10 rounded px-3 py-2"
+            className="bg-black/15 border border-white/10 rounded px-3 py-2"
             value={form.audienceSize}
             onChange={(e) => update("audienceSize", Number(e.target.value))}
             required
@@ -101,7 +101,7 @@ export default function ProposalForm({ onResult }: Props) {
             type="number"
             min={1000}
             step={500}
-            className="bg-white/5 border border-white/10 rounded px-3 py-2"
+            className="bg-black/15 border border-white/10 rounded px-3 py-2"
             value={form.budget}
             onChange={(e) => update("budget", Number(e.target.value))}
             required
@@ -112,7 +112,7 @@ export default function ProposalForm({ onResult }: Props) {
           <span className="text-sm text-black/70">Target Date</span>
           <input
             type="date"
-            className="bg-white/5 border border-white/10 rounded px-3 py-2"
+            className="bg-black/15 border border-white/10 rounded px-3 py-2"
             value={form.date}
             onChange={(e) => update("date", e.target.value)}
             required
@@ -122,7 +122,7 @@ export default function ProposalForm({ onResult }: Props) {
         <label className="md:col-span-2 grid gap-2 border border-black rounded p-2">
           <span className="text-sm text-black/70">Location</span>
           <input
-            className="bg-white/5 border border-white/10 rounded px-3 py-2"
+            className="bg-black/15 border text-white border-white/10 rounded px-3 py-2"
             value={form.location}
             onChange={(e) => update("location", e.target.value)}
             placeholder="City / venue"
