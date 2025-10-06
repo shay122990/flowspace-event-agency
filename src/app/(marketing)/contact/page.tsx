@@ -2,10 +2,13 @@
 
 import { motion } from "framer-motion";
 import AnimatedParticles from "@/app/components/AnimatedParticles";
+import ContactCard from "./components/ContactCard";
+import { Mail, Phone, MessageCircle } from "lucide-react";
 
 export default function ContactPage() {
   return (
-    <main className="relative min-h-[100svh] overflow-hidden bg-[#0b0b12]">
+    <main className="relative min-h-[100svh] overflow-hidden bg-[#0b0b12] text-white">
+      {/* big spinning conic */}
       <motion.div
         aria-hidden
         initial={{ rotate: 0, scale: 1 }}
@@ -18,6 +21,7 @@ export default function ContactPage() {
         }}
       />
 
+      {/* soft radial wash */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(60%_60%_at_50%_35%,#000_30%,transparent_70%)]"
@@ -25,6 +29,7 @@ export default function ContactPage() {
         <div className="absolute inset-x-0 top-0 mx-auto h-[44rem] w-[44rem] rounded-full bg-gradient-to-br from-fuchsia-500/30 via-sky-400/20 to-emerald-400/30 blur-2xl" />
       </div>
 
+      {/* grid texture */}
       <div
         aria-hidden
         className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.06)_1px,transparent_1px)] bg-[size:32px_32px] opacity-20 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]"
@@ -32,30 +37,37 @@ export default function ContactPage() {
 
       <AnimatedParticles />
 
-      <section className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-4 text-center">
+      <section className="relative z-10 flex mt-20 flex-col items-center justify-center px-4 text-center">
         <motion.h1
-          initial={{ y: 20, opacity: 0, filter: "blur(4px)" }}
-          animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-gradient-to-br from-white via-white to-white/70 bg-clip-text text-5xl font-black leading-tight tracking-tight text-transparent md:text-6xl lg:text-8xl"
+          className="bg-gradient-to-br text-gray-600 bg-clip-text text-5xl font-black leading-tight tracking-tight  md:text-6xl lg:text-8xl"
         >
           Contact
         </motion.h1>
 
-        <motion.p
-          initial={{ y: 10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.1, duration: 0.5 }}
-          className="mt-4 text-lg text-black/80 md:text-xl"
-        >
-          Email:{" "}
-          <a
+        <div className="mx-auto mt-10 grid w-full max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ContactCard
+            icon={Mail}
+            label="Email"
+            helper="hello@flowspace.app"
             href="mailto:hello@flowspace.app"
-            className="underline decoration-fuchsia-400 decoration-2 underline-offset-4 hover:text-fuchsia-300"
-          >
-            hello@flowspace.app
-          </a>
-        </motion.p>
+          />
+          <ContactCard
+            icon={Phone}
+            label="Phone"
+            helper="Tap to call"
+            href="tel:+971000000000"
+          />
+          <ContactCard
+            icon={MessageCircle}
+            label="WhatsApp"
+            helper="Say hi on WhatsApp"
+            href="https://wa.me/0000000000"
+            target="_blank"
+          />
+        </div>
       </section>
 
       <motion.div
