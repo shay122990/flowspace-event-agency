@@ -37,17 +37,19 @@ export default function ContactCard({
       target={target}
       rel={computedRel}
       className={
-        "group relative block rounded-2xl border border-white/10 bg-white/5 p-5 text-white backdrop-saturate-150 transition-colors hover:border-white/20 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 " +
+        "group relative block rounded-2xl border border-white/50 bg-white/5 p-5 text-white md:text-gray-600 backdrop-saturate-150 transition-colors hover:border-white/20 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 " +
         className
       }
     >
-      <div className="flex items-center gap-4">
-        <span className="rounded-xl bg-white/10 p-3">
+      <div className="flex items-center gap-3 sm:gap-4">
+        <span className="grid h-12 w-12 place-items-center rounded-xl bg-white/10 flex-none">
           <Icon className="h-5 w-5" aria-hidden />
         </span>
         <div>
-          <p className="font-medium text-white">{label}</p>
-          {helper && <p className="text-sm text-white/60">{helper}</p>}
+          <p className="font-semibold text-inherit text-left">{label}</p>
+          {helper && (
+            <p className="text-sm text-white/70 md:text-gray-500">{helper}</p>
+          )}
         </div>
       </div>
     </motion.a>
