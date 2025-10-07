@@ -4,17 +4,18 @@ import { motion } from "framer-motion";
 import AnimatedParticles from "@/app/components/AnimatedParticles";
 import ContactCard from "./components/ContactCard";
 import { Mail, Phone, MessageCircle } from "lucide-react";
+import ContactForm from "./components/ContactForm";
 
 export default function ContactPage() {
   return (
-    <main className="relative min-h-[100svh] overflow-hidden bg-[#0b0b12] text-white">
+    <main className="relative py-10 overflow-hidden bg-[#0b0b12] text-white rounded-xl">
       {/* big spinning conic */}
       <motion.div
         aria-hidden
         initial={{ rotate: 0, scale: 1 }}
         animate={{ rotate: 360 }}
         transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
-        className="pointer-events-none absolute -top-40 -left-40 h-[60rem] w-[60rem] rounded-full opacity-60 blur-3xl"
+        className="pointer-events-none absolute -top-40 -left-40 h-[60rem] w-[60rem] rounded-xl opacity-60 blur-3xl"
         style={{
           background:
             "conic-gradient(from 90deg at 50% 50%, #7c3aed, #06b6d4, #22c55e, #f43f5e, #f59e0b, #7c3aed)",
@@ -37,7 +38,7 @@ export default function ContactPage() {
 
       <AnimatedParticles />
 
-      <section className="relative z-10 flex mt-20 flex-col items-center justify-center px-4 text-center">
+      <section className="relative z-10 flex flex-col items-center justify-center px-4 text-center">
         <motion.h1
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -47,7 +48,7 @@ export default function ContactPage() {
           Contact
         </motion.h1>
 
-        <div className="mx-auto mt-10 grid w-full max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto pt-10 grid w-full max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <ContactCard
             icon={Mail}
             label="Email"
@@ -69,7 +70,13 @@ export default function ContactPage() {
           />
         </div>
       </section>
-
+      <section className="relative z-10 px-4">
+        <div className="mx-auto mt-10 grid w-full max-w-5xl gap-6 lg:grid-cols-3">
+          <div className="lg:col-span-2">
+            <ContactForm to="hello@flowspace.app" />
+          </div>
+        </div>
+      </section>
       <motion.div
         aria-hidden
         initial={{ x: "-10%" }}
