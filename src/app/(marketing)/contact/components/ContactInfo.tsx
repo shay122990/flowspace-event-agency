@@ -24,7 +24,7 @@ export type Props = {
 
 export default function ContactInfo({
   companyName = "FlowSpace",
-  email = "hello@pulseevents.com",
+  email = "hello@flowspace.app",
   phone = "+971 50 000 0000",
   address = "Dubai, UAE",
   socials = [],
@@ -52,15 +52,15 @@ export default function ContactInfo({
       whileInView="show"
       viewport={{ once: true, amount: 0.15 }}
       variants={fadeUp}
-      className={`text-white md:text-gray-600 grid gap-6 ${className}`}
+      className={`text-gray-600 grid gap-6 border rounded-xl p-4 ${className}`}
     >
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-4">
           <div>
-            <h3 className="text-lg font-semibold text-white md:text-gray-800">
+            <h3 className="text-lg font-semibold text-gray-800">
               {companyName}
             </h3>
-            <p className="mt-1 text-sm text-white/70 md:text-gray-500">
+            <p className="mt-1 text-sm text-gray-500">
               Events production • Talent • Venues
             </p>
           </div>
@@ -68,43 +68,37 @@ export default function ContactInfo({
           <div className="grid gap-3">
             <a
               href={`mailto:${email}`}
-              className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-3 text-inherit transition hover:border-white/20"
+              className="group flex items-center gap-3 rounded-xl border border-black/10 bg-white/5 p-3 text-inherit transition hover:border-black/20"
             >
               <span className="grid h-10 w-10 place-items-center rounded-lg bg-white/10">
                 <Mail className="h-4 w-4" />
               </span>
               <div className="text-sm">
                 <div className="font-medium text-inherit">{email}</div>
-                <div className="text-xs text-white/60 md:text-gray-500">
-                  General inquiries
-                </div>
+                <div className="text-xs text-gray-500">General inquiries</div>
               </div>
             </a>
 
             <a
               href={`tel:${phone}`}
-              className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-3 text-inherit transition hover:border-white/20"
+              className="group flex items-center gap-3 rounded-xl border border-black/10 bg-white/5 p-3 text-inherit transition hover:border-black/20"
             >
               <span className="grid h-10 w-10 place-items-center rounded-lg bg-white/10">
                 <Phone className="h-4 w-4" />
               </span>
               <div className="text-sm">
                 <div className="font-medium text-inherit">{phone}</div>
-                <div className="text-xs text-white/60 md:text-gray-500">
-                  Bookings
-                </div>
+                <div className="text-xs text-gray-500">Bookings</div>
               </div>
             </a>
 
-            <div className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-3 text-inherit">
+            <div className="group flex items-center gap-3 rounded-xl border border-black/10 bg-white/5 p-3 text-inherit">
               <span className="grid h-10 w-10 place-items-center rounded-lg bg-white/10">
                 <MapPin className="h-4 w-4" />
               </span>
               <div className="text-sm">
                 <div className="font-medium text-inherit">{address}</div>
-                <div className="text-xs text-white/60 md:text-gray-500">
-                  Location
-                </div>
+                <div className="text-xs text-gray-500">Location</div>
               </div>
             </div>
           </div>
@@ -117,7 +111,7 @@ export default function ContactInfo({
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-inherit transition hover:border-white/20"
+                  className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/5 px-3 py-2 text-xs font-medium text-inherit transition hover:border-black/20"
                 >
                   {s.Icon ? <s.Icon className="h-4 w-4" /> : null}
                   {s.name}
@@ -128,19 +122,15 @@ export default function ContactInfo({
         </div>
 
         <div>
-          <h4 className="text-md mb-3 font-semibold text-white md:text-gray-800">
-            FAQ
-          </h4>
-          <div className="divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5">
+          <h4 className="text-md mb-3 font-semibold text-gray-800">FAQ</h4>
+          <div className="divide-y divide-white/10 rounded-2xl border border-black/10 bg-white/5">
             {faqs.map((f, i) => (
               <details key={i} className="group">
-                <summary className="list-none cursor-pointer select-none p-4 text-left text-white/90 md:text-gray-700">
+                <summary className="list-none cursor-pointer select-none p-4 text-left text-gray-700">
                   <span className="mr-2 text-sm opacity-60">Q{i + 1}.</span>
                   {f.q}
                 </summary>
-                <div className="px-4 pb-4 text-white/70 md:text-gray-600">
-                  {f.a}
-                </div>
+                <div className="px-4 pb-4 text-gray-600">{f.a}</div>
               </details>
             ))}
           </div>
@@ -148,11 +138,9 @@ export default function ContactInfo({
       </div>
 
       <div>
-        <h4 className="text-md font-semibold text-white md:text-gray-800">
-          Location
-        </h4>
-        <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 mt-3">
-          <div className="flex items-center gap-2 p-3 text-white/80 md:text-gray-600">
+        <h4 className="text-md font-semibold text-gray-800">Location</h4>
+        <div className="overflow-hidden rounded-2xl border border-black/10 bg-white/5 mt-3">
+          <div className="flex items-center gap-2 p-3 text-gray-600">
             <MapPin className="h-4 w-4" />
             <p className="text-sm">{address} — Remote & on-site</p>
           </div>

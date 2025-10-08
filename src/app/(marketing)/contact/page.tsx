@@ -34,6 +34,7 @@ export default function ContactPage() {
         className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.06)_1px,transparent_1px)] bg-[size:32px_32px] opacity-20 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]"
       />
       <AnimatedParticles />
+
       <section className="relative z-10 flex flex-col items-center justify-center px-4 text-center">
         <motion.h1
           initial={{ y: 20, opacity: 0 }}
@@ -45,15 +46,15 @@ export default function ContactPage() {
         </motion.h1>
 
         <p className="mt-3 text-sm text-white/70 md:text-gray-500">
-          Pulse Events — production, bookings, and venue partnerships
+          FlowSpace — production, bookings, and venue partnerships
         </p>
 
         <div className="mx-auto pt-8 grid w-full max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <ContactCard
             icon={Mail}
             label="General Inbox"
-            helper="hello@pulseevents.com"
-            href="mailto:hello@pulseevents.com"
+            helper="hello@flowspace.app"
+            href="mailto:hello@flowspace.app"
           />
           <ContactCard
             icon={Phone}
@@ -74,33 +75,14 @@ export default function ContactPage() {
       <section className="relative z-10 px-4 mt-12">
         <div className="mx-auto grid w-full max-w-6xl gap-8">
           <div className="lg:col-span-2">
-            <ContactForm to="hello@pulseevents.com" />
+            <ContactForm to="hello@flowspace.app" />
           </div>
         </div>
       </section>
 
       <section className="relative z-10 px-4 mt-8">
         <div className="mx-auto w-full max-w-6xl">
-          <ContactInfo
-            companyName="Pulse Events"
-            email="hello@pulseevents.com"
-            phone="+971 50 000 0000"
-            address="Dubai, UAE"
-            socials={[
-              {
-                name: "Instagram",
-                href: "https://instagram.com/pulseevents",
-                Icon: undefined,
-              },
-              {
-                name: "Facebook",
-                href: "https://facebook.com/pulseevents",
-                Icon: undefined,
-              },
-            ]}
-            // mapSrc can be overridden if needed
-            mapSrc="https://www.openstreetmap.org/export/embed.html?bbox=55.112%2C24.717%2C55.602%2C25.417&layer=mapnik"
-          />
+          <ContactInfo />
         </div>
       </section>
 
