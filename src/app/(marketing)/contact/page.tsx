@@ -5,11 +5,11 @@ import AnimatedParticles from "@/app/components/AnimatedParticles";
 import ContactCard from "./components/ContactCard";
 import { Mail, Phone, MessageCircle } from "lucide-react";
 import ContactForm from "./components/ContactForm";
+import ContactInfo from "./components/ContactInfo";
 
 export default function ContactPage() {
   return (
     <main className="relative py-10 overflow-hidden bg-[#0b0b12] text-white rounded-xl">
-      {/* big spinning conic */}
       <motion.div
         aria-hidden
         initial={{ rotate: 0, scale: 1 }}
@@ -22,7 +22,6 @@ export default function ContactPage() {
         }}
       />
 
-      {/* soft radial wash */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(60%_60%_at_50%_35%,#000_30%,transparent_70%)]"
@@ -30,53 +29,81 @@ export default function ContactPage() {
         <div className="absolute inset-x-0 top-0 mx-auto h-[44rem] w-[44rem] rounded-full bg-gradient-to-br from-fuchsia-500/30 via-sky-400/20 to-emerald-400/30 blur-2xl" />
       </div>
 
-      {/* grid texture */}
       <div
         aria-hidden
         className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.06)_1px,transparent_1px)] bg-[size:32px_32px] opacity-20 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]"
       />
-
       <AnimatedParticles />
-
       <section className="relative z-10 flex flex-col items-center justify-center px-4 text-center">
         <motion.h1
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-gradient-to-br text-gray-600 bg-clip-text text-5xl font-black leading-tight tracking-tight  md:text-6xl lg:text-8xl"
+          className="bg-clip-text text-5xl font-black leading-tight tracking-tight md:text-6xl lg:text-7xl text-white"
         >
           Contact
         </motion.h1>
 
-        <div className="mx-auto pt-10 grid w-full max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <p className="mt-3 text-sm text-white/70 md:text-gray-500">
+          Pulse Events — production, bookings, and venue partnerships
+        </p>
+
+        <div className="mx-auto pt-8 grid w-full max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <ContactCard
             icon={Mail}
-            label="Email"
-            helper="hello@flowspace.app"
-            href="mailto:hello@flowspace.app"
+            label="General Inbox"
+            helper="hello@pulseevents.com"
+            href="mailto:hello@pulseevents.com"
           />
           <ContactCard
             icon={Phone}
-            label="Phone"
-            helper="Tap to call"
-            href="tel:+971000000000"
+            label="Bookings"
+            helper="+971 50 000 0000"
+            href="tel:+971500000000"
           />
           <ContactCard
             icon={MessageCircle}
             label="WhatsApp"
-            helper="Say hi on WhatsApp"
-            href="https://wa.me/0000000000"
+            helper="Quick message for urgent requests"
+            href="https://wa.me/971500000000"
             target="_blank"
           />
         </div>
       </section>
-      <section className="relative z-10 px-4">
-        <div className="mx-auto mt-10 grid w-full max-w-5xl gap-6 lg:grid-cols-3">
+
+      <section className="relative z-10 px-4 mt-12">
+        <div className="mx-auto grid w-full max-w-6xl gap-8">
           <div className="lg:col-span-2">
-            <ContactForm to="hello@flowspace.app" />
+            <ContactForm to="hello@pulseevents.com" />
           </div>
         </div>
       </section>
+
+      <section className="relative z-10 px-4 mt-8">
+        <div className="mx-auto w-full max-w-6xl">
+          <ContactInfo
+            companyName="Pulse Events"
+            email="hello@pulseevents.com"
+            phone="+971 50 000 0000"
+            address="Dubai, UAE"
+            socials={[
+              {
+                name: "Instagram",
+                href: "https://instagram.com/pulseevents",
+                Icon: undefined,
+              },
+              {
+                name: "Facebook",
+                href: "https://facebook.com/pulseevents",
+                Icon: undefined,
+              },
+            ]}
+            // mapSrc can be overridden if needed
+            mapSrc="https://www.openstreetmap.org/export/embed.html?bbox=55.112%2C24.717%2C55.602%2C25.417&layer=mapnik"
+          />
+        </div>
+      </section>
+
       <motion.div
         aria-hidden
         initial={{ x: "-10%" }}
