@@ -1,20 +1,20 @@
 export type CaseStudy = {
   hero?: {
     kicker?: string;
-    cover?: string; // /public/... optional
+    cover?: string;
   };
   overview: string;
   services: string[];
   highlights: string[];
   stats?: { label: string; value: string }[];
-  gallery?: string[]; // optional images under will be included later
+  gallery?: string[];
 };
 
 export const projectContent: Record<string, CaseStudy> = {
   "wedding-gala-2025": {
     hero: {
       kicker: "Luxury Wedding • Dubai",
-      cover: "/images/wedding/hero.jpg",
+      cover: "/projects/img5.jpg",
     },
     overview:
       "Two-day destination wedding with ceremony, reception, and after-party. We handled vendor management, timelines, guest logistics, and live entertainment.",
@@ -36,11 +36,7 @@ export const projectContent: Record<string, CaseStudy> = {
       { label: "Vendors", value: "18" },
       { label: "Setup Time", value: "36h" },
     ],
-    gallery: [
-      "/images/wedding/1.jpg",
-      "/images/wedding/2.jpg",
-      "/images/wedding/3.jpg",
-    ],
+    gallery: ["/projects/img3.jpg", "/projects/img4.jpg", "/projects/img6.jpg"],
   },
 
   "tech-exhibition-dubai": {
@@ -54,7 +50,7 @@ export const projectContent: Record<string, CaseStudy> = {
       { label: "Visitors", value: "6,000" },
       { label: "Halls", value: "3" },
     ],
-    gallery: ["/images/exhibition/1.jpg", "/images/exhibition/2.jpg"],
+    gallery: ["/projects/img2.jpg", "/projects/img1.jpg"],
   },
 
   "summer-music-festival": {
