@@ -81,7 +81,7 @@ export default function AboutPage() {
           initial={{ y: 20, opacity: 0, filter: "blur(4px)" }}
           animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-gradient-to-br from-white via-white to-white/70 bg-clip-text text-4xl font-extrabold leading-tight tracking-tight text-transparent sm:text-5xl md:text-6xl lg:text-7xl"
+          className="text-white bg-clip-text text-6xl font-extrabold leading-tight tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
         >
           About FlowSpace
         </motion.h1>
