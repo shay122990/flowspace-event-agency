@@ -77,7 +77,7 @@ export default function ContactForm({
       viewport={{ once: true, amount: 0.2 }}
       onSubmit={handleSubmit}
       className={
-        "grid gap-4 rounded-2xl border border-white/50 bg-white/50 p-5 text-gray-600 " +
+        "grid gap-4 rounded-2xl border border-white/50 bg-white p-5 text-gray-600 " +
         className
       }
     >
@@ -89,7 +89,7 @@ export default function ContactForm({
             onChange={(e) => setName(e.target.value)}
             placeholder="Your name"
             autoComplete="name"
-            className="rounded-xl border border-white bg-white/10 px-3 py-2 text-white placeholder:text-gray-400 focus:border-fuchsia-400 focus:outline-none md:text-gray-800"
+            className="rounded-xl border border-black/50 bg-white/10 px-3 py-2 text-white placeholder:text-gray-400 focus:border-fuchsia-400 focus:outline-none md:text-gray-800"
             required
           />
         </label>
@@ -101,7 +101,7 @@ export default function ContactForm({
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
             autoComplete="email"
-            className="rounded-xl border border-white bg-white/10 px-3 py-2 text-white placeholder:text-gray-400 focus:border-fuchsia-400 focus:outline-none md:text-gray-800"
+            className="rounded-xl border border-black/50 bg-white/10 px-3 py-2 text-white placeholder:text-gray-400 focus:border-fuchsia-400 focus:outline-none md:text-gray-800"
             required
           />
         </label>
@@ -115,7 +115,7 @@ export default function ContactForm({
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
           placeholder="What's this about?"
-          className="rounded-xl border border-white bg-white/10 px-3 py-2 text-white placeholder:text-gray-400 focus:border-fuchsia-400 focus:outline-none md:text-gray-800"
+          className="rounded-xl border border-black/50 bg-white/10 px-3 py-2 text-white placeholder:text-gray-400 focus:border-fuchsia-400 focus:outline-none md:text-gray-800"
         />
       </label>
 
@@ -126,7 +126,7 @@ export default function ContactForm({
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Tell me about your project, timeline, and goals…"
           rows={6}
-          className="rounded-2xl border border-white bg-white/10 px-3 py-2 text-white placeholder:text-gray-400 focus:border-fuchsia-400 focus:outline-none md:text-gray-800"
+          className="rounded-2xl border border-black/50 bg-white/10 px-3 py-2 text-white placeholder:text-gray-400 focus:border-fuchsia-400 focus:outline-none md:text-gray-800"
           required
         />
       </label>

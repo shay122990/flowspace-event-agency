@@ -52,7 +52,7 @@ export default function ContactInfo({
       whileInView="show"
       viewport={{ once: true, amount: 0.15 }}
       variants={fadeUp}
-      className={`text-gray-600 grid gap-6 border rounded-xl p-4 ${className}`}
+      className={`text-gray-600 grid gap-6  bg-white rounded-xl p-4 ${className}`}
     >
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-4">

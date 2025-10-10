@@ -37,7 +37,7 @@ export default function ContactCard({
       target={target}
       rel={computedRel}
       className={
-        "group relative block rounded-2xl border border-white/50 bg-white/5 p-5 text-white md:text-gray-600 backdrop-saturate-150 transition-colors hover:border-white/20 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 " +
+        "group relative block rounded-2xl border border-white/50 bg-white/50 p-5 text-white md:text-gray-600 backdrop-saturate-150 transition-colors hover:border-white/20 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 " +
         className
       }
     >
