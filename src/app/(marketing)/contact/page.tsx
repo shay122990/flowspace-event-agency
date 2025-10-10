@@ -40,12 +40,12 @@ export default function ContactPage() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-clip-text text-5xl font-black leading-tight tracking-tight md:text-6xl lg:text-7xl text-white"
+          className="bg-clip-text text-xl font-black leading-tight tracking-tight md:text-6xl lg:text-8xl text-white"
         >
           Contact
         </motion.h1>
 
-        <p className="mt-3 text-sm text-white/70 md:text-gray-500">
+        <p className="mt-3 text-sm text-white md:text-gray-900">
           FlowSpace — production, bookings, and venue partnerships
         </p>
 

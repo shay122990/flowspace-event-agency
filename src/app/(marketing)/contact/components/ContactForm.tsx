@@ -14,8 +14,7 @@ export type ContactFormValues = {
 export type ContactFormProps = {
   onSubmit?: (values: ContactFormValues) => Promise<void> | void;
   className?: string;
-  /** Email to use for the mailto fallback */
-  to?: string; // default: hello@flowspace.app
+  to?: string;
 };
 
 const fadeUp: Variants = {
@@ -23,25 +22,88 @@ const fadeUp: Variants = {
   show: { y: 0, opacity: 1, transition: { duration: 0.4, ease: "easeOut" } },
 };
 
+function InputField({
+  label,
+  value,
+  onChange,
+  type = "text",
+  placeholder,
+  required,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  type?: string;
+  placeholder?: string;
+  required?: boolean;
+}) {
+  return (
+    <label className="flex flex-col gap-2">
+      <span className="text-sm text-gray-600">{label}</span>
+      <input
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        required={required}
+        className="rounded-xl border border-black/50 bg-white/10 px-3 py-2 text-white placeholder:text-gray-400 focus:border-fuchsia-400 focus:outline-none md:text-gray-800"
+      />
+    </label>
+  );
+}
+
+function TextAreaField({
+  label,
+  value,
+  onChange,
+  placeholder,
+  required,
+  rows = 6,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+  required?: boolean;
+  rows?: number;
+}) {
+  return (
+    <label className="flex flex-col gap-2">
+      <span className="text-sm text-gray-600 md:text-gray-500">{label}</span>
+      <textarea
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        rows={rows}
+        required={required}
+        className="rounded-2xl border border-black/50 bg-white/10 px-3 py-2 text-white placeholder:text-gray-400 focus:border-fuchsia-400 focus:outline-none md:text-gray-800"
+      />
+    </label>
+  );
+}
+
 export default function ContactForm({
   onSubmit,
   className = "",
   to = "hello@flowspace.app",
 }: ContactFormProps) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle"
   );
 
   const isValid = useMemo(() => {
-    const okName = name.trim().length > 1;
-    const okEmail = /.+@.+\..+/.test(email);
-    const okMsg = message.trim().length > 5;
+    const okName = form.name.trim().length > 1;
+    const okEmail = /.+@.+\..+/.test(form.email);
+    const okMsg = form.message.trim().length > 5;
     return okName && okEmail && okMsg;
-  }, [name, email, message]);
+  }, [form]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -50,17 +112,16 @@ export default function ContactForm({
 
     try {
       if (onSubmit) {
-        await onSubmit({ name, email, subject, message });
+        await onSubmit(form);
         setStatus("sent");
       } else {
         const body = encodeURIComponent(
-          `From: ${name} <${email}>\n\n${message}`
+          `From: ${form.name} <${form.email}>\n\n${form.message}`
         );
         const subj = encodeURIComponent(
-          subject || "New message from contact form"
+          form.subject || "New message from contact form"
         );
-        const href = `mailto:${to}?subject=${subj}&body=${body}`;
-        window.location.href = href;
+        window.location.href = `mailto:${to}?subject=${subj}&body=${body}`;
         setStatus("sent");
       }
     } catch (err) {
@@ -68,6 +129,9 @@ export default function ContactForm({
       setStatus("error");
     }
   }
+
+  const updateField = (key: keyof typeof form) => (val: string) =>
+    setForm((p) => ({ ...p, [key]: val }));
 
   return (
     <motion.form
@@ -82,54 +146,37 @@ export default function ContactForm({
       }
     >
       <div className="grid gap-4 sm:grid-cols-2">
-        <label className="flex flex-col gap-2">
-          <span className="text-sm text-gray-600">Name</span>
-          <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Your name"
-            autoComplete="name"
-            className="rounded-xl border border-black/50 bg-white/10 px-3 py-2 text-white placeholder:text-gray-400 focus:border-fuchsia-400 focus:outline-none md:text-gray-800"
-            required
-          />
-        </label>
-        <label className="flex flex-col gap-2">
-          <span className="text-sm text-gray-600">Email</span>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@example.com"
-            autoComplete="email"
-            className="rounded-xl border border-black/50 bg-white/10 px-3 py-2 text-white placeholder:text-gray-400 focus:border-fuchsia-400 focus:outline-none md:text-gray-800"
-            required
-          />
-        </label>
-      </div>
-
-      <label className="flex flex-col gap-2">
-        <span className="text-sm text-gray-600 md:text-gray-500">
-          Subject (optional)
-        </span>
-        <input
-          value={subject}
-          onChange={(e) => setSubject(e.target.value)}
-          placeholder="What's this about?"
-          className="rounded-xl border border-black/50 bg-white/10 px-3 py-2 text-white placeholder:text-gray-400 focus:border-fuchsia-400 focus:outline-none md:text-gray-800"
-        />
-      </label>
-
-      <label className="flex flex-col gap-2">
-        <span className="text-sm text-gray-600 md:text-gray-500">Message</span>
-        <textarea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="Tell me about your project, timeline, and goals…"
-          rows={6}
-          className="rounded-2xl border border-black/50 bg-white/10 px-3 py-2 text-white placeholder:text-gray-400 focus:border-fuchsia-400 focus:outline-none md:text-gray-800"
+        <InputField
+          label="Name"
+          value={form.name}
+          onChange={updateField("name")}
+          placeholder="Your name"
           required
         />
-      </label>
+        <InputField
+          label="Email"
+          type="email"
+          value={form.email}
+          onChange={updateField("email")}
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <InputField
+        label="Subject (optional)"
+        value={form.subject}
+        onChange={updateField("subject")}
+        placeholder="What's this about?"
+      />
+
+      <TextAreaField
+        label="Message"
+        value={form.message}
+        onChange={updateField("message")}
+        placeholder="Tell me about your project, timeline, and goals…"
+        required
+      />
 
       <div className="flex items-center justify-between gap-3">
         <p className="text-xs text-gray/60 md:text-gray-500">
