@@ -28,7 +28,7 @@ const FormField = ({
       <span className="text-sm text-black/70">{label}</span>
       {textarea ? (
         <textarea
-          className="rounded border border-white/10 px-3 py-2 text-white placeholder-white 
+          className="rounded border border-white/10 px-3 py-2 
                focus:outline-none focus:ring-2 focus:ring-white/20 
                min-h-[300px] w-full"
           value={value as string}
@@ -38,7 +38,7 @@ const FormField = ({
         />
       ) : (
         <input
-          className="rounded border border-white/50 px-3 py-2 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white/20"
+          className="rounded border border-black/50 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-white/20"
           type={type}
           value={value}
           onChange={onChange}

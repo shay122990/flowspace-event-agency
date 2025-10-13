@@ -9,7 +9,7 @@ export default function ProposalPage() {
   const [result, setResult] = useState<ProposalResponse | null>(null);
 
   return (
-    <main className="relative min-h-[100svh] overflow-hidden bg-[#0b0b12] text-white">
+    <main className="relative min-h-[100svh] overflow-hidden text-white rounded-xl">
       <AmbientBackdrop />
 
       <section className="relative z-10 mx-auto max-w-4xl px-4 py-12">

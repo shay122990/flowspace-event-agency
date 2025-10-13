@@ -71,7 +71,7 @@ export default function ProposalForm({ onResult }: Props) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="grid gap-6 rounded-xl border border-gray-900 p-6"
+      className="grid gap-6 rounded-xl text-gray-900 p-6 bg-white"
     >
       <div className="grid gap-4 md:grid-cols-2">
         <FormField
