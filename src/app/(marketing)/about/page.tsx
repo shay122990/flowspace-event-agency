@@ -78,25 +78,16 @@ export default function AboutPage() {
 
       <section className="relative z-10 mx-auto flex py-10 max-w-6xl flex-col items-center justify-center px-6 text-center">
         <motion.h1
-          initial={{ y: 20, opacity: 0, filter: "blur(4px)" }}
-          animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="text-white bg-clip-text text-6xl font-extrabold leading-tight tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
-        >
-          About FlowSpace
-        </motion.h1>
-
-        <motion.p
           initial={{ y: 10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.08, duration: 0.5 }}
-          className="mt-4 max-w-3xl text-base text-black/80 md:text-lg"
+          className="mt-4 max-w-3xl text-base text-black/80 md:text-xl"
         >
           We design and deliver events & projects with precision, clarity, and
           momentum. From corporate launches and conferences to immersive
           experiential builds, FlowSpace turns complex ideas into seamless
           experiences—on time, on brand, and unforgettable.
-        </motion.p>
+        </motion.h1>
 
         <motion.div
           initial={{ y: 6, opacity: 0 }}

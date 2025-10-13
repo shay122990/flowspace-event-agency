@@ -21,7 +21,7 @@ export default function ProposalResult({ data }: Props) {
   }
 
   return (
-    <section className="rounded-xl border border-gray-950 p-6 grid gap-4">
+    <section className="rounded-xl  bg-white p-6 grid gap-4">
       <h2 className="text-gray-600 text-2xl font-semibold">Draft Proposal</h2>
       <article className="prose prose-invert max-w-none text-gray-950">
         <pre className="whitespace-pre-wrap text-sm">{data.plan}</pre>

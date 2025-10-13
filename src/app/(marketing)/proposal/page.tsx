@@ -17,7 +17,7 @@ export default function ProposalPage() {
           <h1 className="bg-gradient-to-br from-white via-white to-white/70 bg-clip-text text-5xl font-black tracking-tight text-transparent md:text-6xl">
             AI-Free Proposal Generator
           </h1>
-          <p className="mt-4 text-lg text-white/70 md:text-xl">
+          <p className="mt-4 text-lg text-gray-800 md:text-xl">
             Turn a client brief into a structured draft plan: phases, staffing,
             and budget allocation.
           </p>

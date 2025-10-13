@@ -13,7 +13,7 @@ export default function AmbientBackdrop() {
         initial={{ rotate: 0, scale: 1 }}
         animate={{ rotate: 360 }}
         transition={{ repeat: Infinity, ease: "linear", duration: 24 }}
-        className="absolute -top-40 -left-40 h-[56rem] w-[56rem] rounded-full blur-3xl opacity-60"
+        className="absolute -top-40 -left-40 h-full w-full rounded-full blur-3xl opacity-60"
         style={{
           background:
             "conic-gradient(from 90deg at 50% 50%, #7c3aed, #06b6d4, #22c55e, #f43f5e, #f59e0b, #7c3aed)",
@@ -21,7 +21,7 @@ export default function AmbientBackdrop() {
       />
 
       <div
-        className="absolute inset-x-0 top-0 mx-auto h-[42rem] w-[42rem] rounded-full blur-3xl"
+        className="absolute inset-x-0 top-0 mx-auto h-full w-full rounded-full blur-3xl"
         style={{
           background:
             "linear-gradient(135deg, rgba(244,63,94,0.35), rgba(56,189,248,0.3), rgba(16,185,129,0.35))",
@@ -33,9 +33,9 @@ export default function AmbientBackdrop() {
         animate={{ x: "10%" }}
         transition={{ repeat: Infinity, repeatType: "reverse", duration: 18 }}
         className="absolute bottom-[-6rem] left-1/2 h-[14rem] w-[120vw] -translate-x-1/2 rotate-2
-                   bg-gradient-to-r from-fuchsia-500/40 via-cyan-400/40 to-emerald-400/40 blur-2xl"
+                   bg-gradient-to-r from-fuchsia-500/40 via-blue-400 to-pink-400 blur-2xl"
       />
-
+      <AnimatedParticles />
       <div
         className="absolute inset-0 opacity-15"
         style={{
@@ -45,7 +45,6 @@ export default function AmbientBackdrop() {
           backgroundSize: "32px 32px",
         }}
       />
-      <AnimatedParticles />
     </div>
   );
 }
